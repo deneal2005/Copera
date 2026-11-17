@@ -1,0 +1,17 @@
+services:
+  smart-xerox:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      SMX_HOST: 0.0.0.0
+      SMX_DATABASE: /data/xerox.sqlite3
+      SMX_STORAGE: /data/private-documents
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - smart-xerox-data:/data
+
+volumes:
+  smart-xerox-data:
